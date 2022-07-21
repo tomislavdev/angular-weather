@@ -1,0 +1,90 @@
+@import "../../../assets/styles/base.sass"
+
+.main-container
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  width: 100%
+  margin: auto
+
+  .forecast-form
+    width: 100%
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    padding: 2rem 0 1rem 0
+
+    select
+      height: 30px
+      width: 300px
+      font-weight: 600
+      border-radius: $border-radius
+
+      .default-option
+        display: none
+
+  .error
+    font-weight: 600
+    display: flex
+    justify-content: center
+    align-items: center
+
+  .error
+    color: red
+
+  .forecast-container
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    width: 900px
+    height: 230px
+    border-radius: $border-radius
+    margin: 0 auto 2rem auto
+    @include mobile
+      flex-direction: column
+      width: 300px
+      height: 100%
+
+    .inner-forecast-container
+      width: 600px
+      display: flex
+      height: 230px
+      overflow-x: scroll
+      position: relative
+      border-radius: 0 $border-radius $border-radius 0
+      scroll-behavior: smooth
+      @include mobile
+        border-radius: 0 0 $border-radius $border-radius
+        flex-direction: column
+        width: 300px
+        height: 100%
+        margin-top: 0
+        overflow: initial
+
+  .button-container
+    width: 900px
+    display: flex
+    justify-content: center
+    margin: 0 auto 2rem auto
+    @include mobile
+      width: 100%
+
+    .open-form-button
+      width: 200px
+      height: 40px
+      border: 1px solid $base-color
+      background: $base-color
+      font-weight: 600
+      border-radius: $border-radius
+      color: $orange
+      cursor: pointer
+
+      &:hover
+        color: darkgray
+
+    .open-form-button:disabled
+      color: dimgray
+      cursor: not-allowed

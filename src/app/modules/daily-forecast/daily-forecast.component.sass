@@ -1,0 +1,103 @@
+@import "../../../assets/styles/base.sass"
+
+.daily-forecast
+  display: flex
+  flex-direction: column
+  flex: none
+  align-items: center
+  height: 100%
+  width: 120px
+  background: $base-color
+  @include mobile
+    width: 250px
+    height: 220px
+    margin: auto
+    padding: 0
+    border-radius: $border-radius
+
+  > div
+    margin: auto
+    height: 85%
+    width: 100%
+
+    .date
+      display: flex
+      flex-direction: column
+      font-size: 0.7rem
+      text-align: center
+      color: white
+
+      .day-name
+        font-weight: 600
+        font-size: 0.9rem
+
+    .more-info
+      display: none
+      background: rgb(39, 39, 47)
+      position: absolute
+      border-radius: $border-radius
+      flex-direction: column
+      align-items: center
+      padding: 0.5rem
+      margin: -30px 0 0 -20px
+      width: 150px
+      @include mobile
+        margin-left: 42px
+
+      div
+        color: white
+
+      > div:first-of-type
+        padding-bottom: 1rem
+        font-weight: 600
+        margin-top: -0.5rem
+
+      > div:not(:first-of-type)
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        align-items: center
+        width: 100%
+        padding: 0.2rem 1rem
+        font-size: 0.9rem
+
+        > div:last-of-type
+          color: $orange
+          font-size: 0.8rem
+
+    .tooltip
+      text-align: center
+      padding-top: 0.2rem
+
+      &:hover
+        cursor: pointer
+
+        .more-info
+          display: flex
+
+    .icon
+      display: flex
+      justify-content: center
+      height: 70px
+      width: 70px
+      margin: auto
+
+    .temperature, .status
+      text-align: center
+      color: white
+      font-size: 0.9rem
+      padding-top: 0.2rem
+
+.daily-forecast:not(:last-of-type)
+  @include mobile
+    border-bottom: 1px solid black
+
+.daily-forecast:nth-child(2)
+  .more-info
+    @include desktop
+      margin-left: -0
+
+.daily-forecast:nth-child(9)
+  .more-info
+    @include desktop
+      margin-left: -50px

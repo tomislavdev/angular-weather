@@ -1,0 +1,31 @@
+<div class="current-weather">
+  <div>
+    <div class="current-title">
+      Current weather
+    </div>
+    <div class="current-icon-container">
+      <img src="{{ forecastIconsEndpoint + currentForecast.weather[0].icon + '.png' }}" alt="Weather" />
+      <span>{{ currentForecast.temp | floorNumber }}°C</span>
+    </div>
+    <div class="status">{{ currentForecast.weather[0].main }}</div>
+    <div class="feels-like">Feels like {{ currentForecast.feels_like | floorNumber }}°</div>
+    <div class="bottom-info">
+      <div class="humidity">
+        <img src="assets/images/drop.svg" alt="Humidity" />
+        <span>{{ currentForecast.humidity }} %</span>
+      </div>
+      <div class="wind">
+        <img src="assets/images/wind.svg" alt="Wind" />
+        <span>{{ currentForecast.wind_speed }} m/s</span>
+      </div>
+      <div class="sunrise">
+        <img src="assets/images/sunrise.svg" alt="Sunrise" />
+        <span>{{ currentForecast.sunrise * 1000 | date:'HH:MM' }}</span>
+      </div>
+      <div class="sunset">
+        <img src="assets/images/sunset.svg" alt="Sunset" />
+        <span>{{ currentForecast.sunset * 1000 | date:'HH:MM' }}</span>
+      </div>
+    </div>
+  </div>
+</div>

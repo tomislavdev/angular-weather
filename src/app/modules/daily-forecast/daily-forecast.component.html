@@ -1,0 +1,46 @@
+<div class="daily-forecast">
+  <div>
+    <div class="date">
+      <div class="day-name">{{ currentDayName }}</div>
+      <div class="day-date">{{ currentDay.format('DD.MM.YYYY') }}</div>
+    </div>
+    <div class="tooltip">
+      <img src="assets/images/tooltip.png" alt="More info" />
+      <div class="more-info">
+        <div>{{ currentDayName }}</div>
+        <div>
+          <div>Temperature:</div>
+          <div>
+            {{ this.dailyForecast.temp.min | floorNumber }}° / {{ this.dailyForecast.temp.max | floorNumber }}°
+          </div>
+        </div>
+        <div>
+          <div>Feels like:</div>
+          <div>
+            {{ this.dailyForecast.feels_like?.day | floorNumber }}° /
+            {{ this.dailyForecast.feels_like?.night | floorNumber }}°
+          </div>
+        </div>
+        <div>
+          <div>Wind speed:</div>
+          <div>{{ dailyForecast.wind_speed }} m/s</div>
+        </div>
+        <div>
+          <div>Pressure:</div>
+          <div>{{ dailyForecast.pressure }} hPa</div>
+        </div>
+        <div>
+          <div>Humidity</div>
+          <div>{{ dailyForecast.humidity }} %</div>
+        </div>
+      </div>
+    </div>
+    <div class="icon">
+      <img src="{{ forecastIconsEndpoint + dailyForecast.weather[0].icon + '.png' }}" alt="Weather" />
+    </div>
+    <div class="temperature">
+      {{ this.dailyForecast.temp.min | floorNumber }}° / {{ this.dailyForecast.temp.max | floorNumber }}°
+    </div>
+    <div class="status">{{ dailyForecast.weather[0].main }}</div>
+  </div>
+</div>

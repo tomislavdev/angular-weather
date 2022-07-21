@@ -1,0 +1,38 @@
+<div class="main-container">
+  <form class="forecast-form" [formGroup]="form" (ngSubmit)="submitForm(city)">
+    <select (change)="submitForm(city)" #city>
+      <option class="default-option" value="">Select a city</option>
+      <option *ngFor="let city of cities" [value]="city.id">
+        {{ city.name }}
+      </option>
+    </select>
+  </form>
+
+  <h3 class="error" *ngIf="forecast && forecast.error">{{ forecast.error }}</h3>
+
+  <div *ngIf="forecast && forecast.data && forecast.data.daily && forecast.data.current">
+    <app-navigation></app-navigation>
+
+    <div class="forecast-container">
+      <app-current-forecast [currentForecast]="forecast.data.current"></app-current-forecast>
+
+      <div class="inner-forecast-container disable-scrollbars" id="inner-forecast-container">
+        <div class="scroll-arrows scroll-left" (click)="horizontalSlide(false)">
+          <img src="assets/images/arrow.svg" alt="Slide to left"/>
+        </div>
+
+        <app-daily-forecast *ngFor="let day of forecast.data.daily; let i = index" [index]="i"></app-daily-forecast>
+
+        <div class="scroll-arrows scroll-right" (click)="horizontalSlide(true)">
+          <img src="assets/images/arrow.svg" alt="Slide to right" class="arrow-right" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <button class="open-form-button">
+      Add metrics manually
+    </button>
+  </div>
+</div>

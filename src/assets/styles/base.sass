@@ -1,0 +1,17 @@
+// ----- Global variables and mixins ----- //
+
+$base-color: #34313B
+
+$orange: #FFA500FF
+
+$border-radius: 5px
+
+@mixin desktop
+  @media (min-width: 960px)
+    @content
+
+@mixin mobile
+  @media (max-width: 959.5px)
+    @content
+
+// ----- End of global variables and mixins ----- //
