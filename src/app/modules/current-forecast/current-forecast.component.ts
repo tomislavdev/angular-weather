@@ -9,11 +9,13 @@ import { environment } from "../../../environments/environment";
 })
 export class CurrentForecastComponent implements OnInit {
   forecastIconsEndpoint = environment.weatherApiIconsEndpoint;
+  city: string;
 
   @Input('currentForecast') currentForecast: CurrentForecast;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.city = JSON.parse(localStorage.getItem('forecast'))?.data?.timezone || '';
   }
 }
