@@ -15,4 +15,9 @@ export class ForecastService {
 
     return this.apiService.get(weatherApiUrl).pipe(take(1));
   }
+
+  horizontalSlide(toRight: boolean, elementId: string, value: number) {
+    const scrollValue = toRight ? value : -value;
+    document.getElementById(elementId).scrollLeft += scrollValue;
+  }
 }

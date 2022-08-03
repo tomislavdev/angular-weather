@@ -20,17 +20,13 @@ export class ForecastComponent implements OnInit {
 
   constructor(
     private formService: FormService,
-    private forecastService: ForecastService,
-    private titleService: Title
+    private titleService: Title,
+    public forecastService: ForecastService,
   ) { }
 
   ngOnInit(): void {
     this.form = this.formService.initForecastForm();
-  }
-
-  horizontalSlide(toRight: boolean) {
-    const scrollValue = toRight ? 120 : -120;
-    document.getElementById('inner-forecast-container').scrollLeft += scrollValue;
+    this.loadFromStorage();
   }
 
   openStationaryMetricsForm() {
@@ -42,8 +38,23 @@ export class ForecastComponent implements OnInit {
     // toggleStationaryMetrics(true);
   }
 
-  submitForm(chosenCity: HTMLSelectElement) {
-    const city: City = this.cities.filter((city: City) => city.id === +chosenCity.value)[0];
+  loadFromStorage() {
+    const forecastStorage = JSON.parse(localStorage.getItem('forecast'))?.data;
+
+    if (forecastStorage) {
+      const city = this.cities.filter(city => city.name === forecastStorage.timezone.split('/')[1]);
+
+      if (city) {
+        const cityId = city[0].id.toString();
+        this.form.get('city').patchValue(cityId);
+        this.submitForm(cityId);
+      }
+    }
+  }
+
+  submitForm(cityId: string) {
+    const city: City = this.cities.filter((city: City) => city.id === +cityId)[0];
+
     this.forecastService.getForecast(city.lat, city.lon).subscribe({
       next: (forecast) => {
         const title = forecast.timezone.split('/')[1] + ' Weather Forecast';

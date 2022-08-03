@@ -1,6 +1,6 @@
 <div class="main-container">
-  <form class="forecast-form" [formGroup]="form" (ngSubmit)="submitForm(city)">
-    <select (change)="submitForm(city)" #city>
+  <form class="forecast-form" [formGroup]="form" (ngSubmit)="submitForm(city.value)">
+    <select formControlName="city" (change)="submitForm(city.value)" #city>
       <option class="default-option" value="">Select a city</option>
       <option *ngFor="let city of cities" [value]="city.id">
         {{ city.name }}
@@ -17,7 +17,8 @@
       <app-current-forecast [currentForecast]="forecast.data.current"></app-current-forecast>
 
       <div class="inner-forecast-container disable-scrollbars" id="inner-forecast-container">
-        <div class="scroll-arrows scroll-left" (click)="horizontalSlide(false)">
+        <div class="scroll-arrows scroll-left"
+             (click)="forecastService.horizontalSlide(false, 'inner-forecast-container', 120)">
           <img src="assets/images/arrow.svg" alt="Slide to left"/>
         </div>
 
@@ -26,7 +27,8 @@
           [index]="i" [first]="first" [last]="last">
         </app-daily-forecast>
 
-        <div class="scroll-arrows scroll-right" (click)="horizontalSlide(true)">
+        <div class="scroll-arrows scroll-right"
+             (click)="forecastService.horizontalSlide(true, 'inner-forecast-container', 120)">
           <img src="assets/images/arrow.svg" alt="Slide to right" class="arrow-right" />
         </div>
       </div>

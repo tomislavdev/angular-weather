@@ -1,0 +1,60 @@
+<h3 class="error" *ngIf="!forecast || forecast?.error">{{ forecast.error }}</h3>
+
+<div *ngIf="forecast?.data?.hourly">
+  <div class="city-title">{{ forecast.data.timezone.split('/')[1] }}</div>
+
+  <app-navigation></app-navigation>
+
+  <div class="hourly-forecast-container">
+    <div class="side-titles">
+      <div class="hour">Hour</div>
+      <div class="date">Date</div>
+      <div class="icon">&nbsp;</div>
+      <div class="wind-speed">Wind speed</div>
+      <div class="feels-like">Feels like</div>
+      <div class="cloudiness">Cloudiness</div>
+      <div class="pressure">Pressure</div>
+      <div class="humidity">Humidity</div>
+    </div>
+
+    <div class="hourly-forecast disable-scrollbars" id="hourly-forecast">
+      <div class="scroll-arrows scroll-left"
+           (click)="forecastService.horizontalSlide(false, 'hourly-forecast', 108.75)">
+        <img src="assets/images/arrow.svg" alt="Slide to left"/>
+      </div>
+
+      <div class="inner-container" *ngFor="let hourly of forecast.data.hourly">
+        <div class="hour">{{ hourly.dt * 1000 | date:'HH:mm' }}</div>
+        <div class="date">{{ hourly.dt * 1000 | date:'dd.MM.YYYY' }}</div>
+        <div class="icon">
+          <img src="{{ forecastIconsEndpoint + hourly.weather[0].icon + '.png' }}" alt="Weather" />
+        </div>
+        <div class="wind-speed">
+          <div class="info-mobile">Wind speed: </div>
+          {{ hourly.wind_speed }} m/s
+        </div>
+        <div class="feels-like">
+          <div class="info-mobile">Feels like: </div>
+          {{ hourly.feels_like }} °
+        </div>
+        <div class="cloudiness">
+          <div class="info-mobile">Cloudiness: </div>
+          {{ hourly.clouds }} %
+        </div>
+        <div class="pressure">
+          <div class="info-mobile">Pressure: </div>
+          {{ hourly.pressure }} hPa
+        </div>
+        <div class="humidity">
+          <div class="info-mobile">Humidity: </div>
+          {{ hourly.humidity }} %
+        </div>
+      </div>
+
+      <div class="scroll-arrows scroll-right"
+           (click)="forecastService.horizontalSlide(true, 'hourly-forecast', 108.75)">
+        <img src="assets/images/arrow.svg" alt="Slide to right" class="arrow-right" />
+      </div>
+    </div>
+  </div>
+</div>

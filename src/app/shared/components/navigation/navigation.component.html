@@ -1,8 +1,8 @@
 <ul class="nav">
-  <li class="" [ngClass]="{'hidden': isForecastPage}">
+  <li [ngClass]="{'hidden': isForecastPage}">
     <a [routerLink]="['/forecast']">Current weather</a>
   </li>
-  <li class="" [ngClass]="{'hidden': !isForecastPage}">
-    <a [routerLink]="[hourlyLink]">24 hours</a>
+  <li [ngClass]="{'hidden': !isForecastPage}">
+    <a [routerLink]="['/hourly']">24 hours</a>
   </li>
 </ul>
