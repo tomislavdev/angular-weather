@@ -1,4 +1,4 @@
-<div class="daily-forecast">
+<div class="daily-forecast" [ngClass]="{'daily-forecast-first': first, 'daily-forecast-last': last}">
   <div>
     <div class="date">
       <div class="day-name">{{ currentDayName }}</div>

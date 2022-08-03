@@ -15,6 +15,8 @@ export class DailyForecastComponent implements OnInit {
   forecastIconsEndpoint = environment.weatherApiIconsEndpoint;
 
   @Input('index') index: number;
+  @Input('first') first: boolean;
+  @Input('last') last: boolean;
 
   constructor() { }
 

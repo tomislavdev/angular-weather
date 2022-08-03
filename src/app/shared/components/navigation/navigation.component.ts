@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from "../../../../environments/environment";
 
 @Component({
   selector: 'app-navigation',
@@ -6,12 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.sass']
 })
 export class NavigationComponent implements OnInit {
-  isHomePage = true;
+  isForecastPage: boolean;
+  hourlyLink: string;
 
   constructor() { }
 
-  ngOnInit(): void {
-    this.isHomePage = window.location.pathname === "/";
+  ngOnInit() {
+    this.initFields();
   }
 
+  initFields() {
+    const forecast = JSON.parse(localStorage.getItem('forecast'));
+    const lon = forecast?.data?.lon || environment.defaultLon;
+    const lat = forecast?.data?.lat || environment.defaultLat;
+
+    this.isForecastPage = window.location.pathname === '/forecast';
+    this.hourlyLink = `/hourly?lon=${ lon }&lat=${ lat }`;
+  }
 }

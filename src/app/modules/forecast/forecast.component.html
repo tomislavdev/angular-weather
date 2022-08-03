@@ -21,7 +21,10 @@
           <img src="assets/images/arrow.svg" alt="Slide to left"/>
         </div>
 
-        <app-daily-forecast *ngFor="let day of forecast.data.daily; let i = index" [index]="i"></app-daily-forecast>
+        <app-daily-forecast
+          *ngFor="let day of forecast.data.daily; let i = index; let first = first ;let last = last;"
+          [index]="i" [first]="first" [last]="last">
+        </app-daily-forecast>
 
         <div class="scroll-arrows scroll-right" (click)="horizontalSlide(true)">
           <img src="assets/images/arrow.svg" alt="Slide to right" class="arrow-right" />
