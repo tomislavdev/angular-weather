@@ -6,10 +6,12 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "../../shared/shared.module";
 import { CurrentForecastModule } from "../current-forecast/current-forecast.module";
 import { DailyForecastModule } from "../daily-forecast/daily-forecast.module";
+import { StationaryMetricsComponent } from './stationary-metrics/stationary-metrics.component';
 
 @NgModule({
   declarations: [
-    ForecastComponent
+    ForecastComponent,
+    StationaryMetricsComponent
   ],
   imports: [
     CommonModule,
