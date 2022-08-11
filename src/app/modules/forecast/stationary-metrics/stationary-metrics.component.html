@@ -1,0 +1,64 @@
+<mat-dialog-content class="dialog-content">
+  <div class="form-title">Add metrics manually:</div>
+
+  <form class="stationary-form" [formGroup]="stationaryForm" (ngSubmit)="submitStationaryForm()">
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username">
+      <mat-error *ngIf="stationaryForm.controls['username'].errors?.['required']">
+        Username is required.
+      </mat-error>
+      <mat-error *ngIf="stationaryForm.controls['username'].errors?.['max']">
+        Username must be between 0 and 20 characters.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+      <mat-error *ngIf="stationaryForm.controls['email'].errors">
+        Please enter a valid email.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Temperature</mat-label>
+      <input matInput formControlName="temperature">
+      <mat-error *ngIf="stationaryForm.controls['temperature'].errors">
+        Please enter a valid temperature value.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Wind speed</mat-label>
+      <input matInput formControlName="windSpeed">
+      <mat-error *ngIf="stationaryForm.controls['windSpeed'].errors">
+        Please enter a valid wind speed value.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Humidity</mat-label>
+      <input matInput formControlName="humidity">
+      <mat-error *ngIf="stationaryForm.controls['humidity'].errors">
+        Please enter a valid humidity value.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Pressure</mat-label>
+      <input matInput formControlName="pressure">
+      <mat-error *ngIf="stationaryForm.controls['pressure'].errors">
+        Please enter a valid pressure value.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Rain</mat-label>
+      <input matInput formControlName="rain">
+      <mat-error *ngIf="stationaryForm.controls['rain'].errors">
+        Please enter a valid rain value.
+      </mat-error>
+    </mat-form-field>
+
+    <button class="submit-form" type="submit" [disabled]="!stationaryForm.valid">Submit</button>
+    <button class="close-form" type="button" [mat-dialog-close]="true">Close</button>
+  </form>
+
+  <div *ngIf="success" class="success">{{ success }}</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+</mat-dialog-content>

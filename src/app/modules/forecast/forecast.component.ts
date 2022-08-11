@@ -6,6 +6,8 @@ import { City } from "../../shared/models/city";
 import { ForecastService } from "../../core/services/forecast.service";
 import { Forecast } from "../../shared/models/forecast";
 import { Title } from "@angular/platform-browser";
+import { MatDialog } from "@angular/material/dialog";
+import { StationaryMetricsComponent } from "./stationary-metrics/stationary-metrics.component";
 
 @Component({
   selector: 'app-forecast',
@@ -21,21 +23,13 @@ export class ForecastComponent implements OnInit {
   constructor(
     private formService: FormService,
     private titleService: Title,
+    private dialog: MatDialog,
     public forecastService: ForecastService,
   ) { }
 
   ngOnInit(): void {
     this.form = this.formService.initForecastForm();
     this.loadFromStorage();
-  }
-
-  openStationaryMetricsForm() {
-    window.scroll({
-      top: 0,
-      behavior: 'smooth'
-    });
-
-    // toggleStationaryMetrics(true);
   }
 
   loadFromStorage() {
@@ -71,5 +65,9 @@ export class ForecastComponent implements OnInit {
         localStorage.setItem('forecast', JSON.stringify({ error: 'An error occurred. Please try again later.'}));
       }
     });
+  }
+
+  openStationaryMetricsForm() {
+    this.dialog.open(StationaryMetricsComponent);
   }
 }

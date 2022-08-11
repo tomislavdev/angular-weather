@@ -7,6 +7,10 @@ import { SharedModule } from "../../shared/shared.module";
 import { CurrentForecastModule } from "../current-forecast/current-forecast.module";
 import { DailyForecastModule } from "../daily-forecast/daily-forecast.module";
 import { StationaryMetricsComponent } from './stationary-metrics/stationary-metrics.component';
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { StationaryMetricsComponent } from './stationary-metrics/stationary-metr
     ReactiveFormsModule,
     SharedModule,
     CurrentForecastModule,
-    DailyForecastModule
+    DailyForecastModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
   ]
 })
 export class ForecastModule { }

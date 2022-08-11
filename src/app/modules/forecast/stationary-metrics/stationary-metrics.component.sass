@@ -1,0 +1,52 @@
+@import "../../../../assets/styles/base.sass"
+
+.dialog-content
+  width: 300px
+  max-height: 95vh
+
+  .form-title
+    font-weight: 600
+    font-size: 1.2rem
+    margin: 0 auto 1rem auto
+    text-align: center
+
+  .stationary-form
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+    .submit-form, .close-form
+      width: 250px
+      height: 30px
+      border: none
+      border-radius: 5px
+      margin-top: 1rem
+      font-weight: 600
+      font-size: 0.9rem
+      cursor: pointer
+
+      &:hover
+        color: darkgray
+
+    .submit-form
+      background: $base-color
+      color: $orange
+
+      &:disabled
+        opacity: 0.3
+        cursor: not-allowed
+
+    .close-form
+      background: gray
+      color: white
+
+  .success
+    margin: 1rem auto
+    text-align: center
+    color: green
+
+  .error
+    margin: 1rem auto
+    text-align: center
+    color: red
