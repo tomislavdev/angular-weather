@@ -27,11 +27,8 @@ export class DailyForecastComponent implements OnInit {
   getAndMapForecast() {
     const forecast = JSON.parse(localStorage.getItem('forecast'));
 
-    if (forecast && forecast.data && forecast.data.current) {
-      this.dailyForecast = forecast.data.daily[this.index];
-      this.currentDay = moment.unix(this.dailyForecast.dt);
-      this.currentDayName = this.index === 0 ? 'Today' : this.index === 1 ?
-        'Tomorrow' : this.currentDay.format('dddd');
-    }
+    this.dailyForecast = forecast.data.daily[this.index];
+    this.currentDay = moment.unix(this.dailyForecast.dt);
+    this.currentDayName = this.index === 0 ? 'Today' : this.index === 1 ? 'Tomorrow' : this.currentDay.format('dddd');
   }
 }

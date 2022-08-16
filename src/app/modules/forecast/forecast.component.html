@@ -10,7 +10,7 @@
 
   <h3 class="error" *ngIf="forecast && forecast.error">{{ forecast.error }}</h3>
 
-  <div *ngIf="forecast && forecast.data && forecast.data.daily && forecast.data.current">
+  <div *ngIf="forecast?.data?.daily && forecast?.data?.current">
     <app-navigation></app-navigation>
 
     <div class="forecast-container">
