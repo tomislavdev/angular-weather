@@ -1,6 +1,6 @@
 # Stage 1
 # Start from lightweight node
-FROM node:16-alpine as node
+FROM node:lts-alpine as node
 LABEL author="Tomislav"
 WORKDIR /app
 
